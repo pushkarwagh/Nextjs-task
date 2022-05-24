@@ -45,7 +45,7 @@ export default function Base() {
                 {state.album?.map((row,index) => (
                   <>
                   <Grid item key={index} xs={12} sm={6} md={4}>
-                  <center><h4>---{row.tag}----</h4></center>
+                  <center><h4 className={styles.tag}>---{row.tag}----</h4></center>
                     <Card >
                       <CardMedia
                         component="img"

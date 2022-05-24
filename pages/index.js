@@ -28,7 +28,7 @@ export default function Home() {
   
   useEffect(() => {
     fetch("https://random.imagecdn.app/500/150").then((res) => {
-      console.log("--res", res)
+      // console.log("--res", res)
       setRanImage(res.url)
     }).catch((e) => {
       console.log("error", e)
