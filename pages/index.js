@@ -22,6 +22,7 @@ export default function Home() {
   const [caption, setCaption] = useState("");
   const [tag, setTag] = useState("");
   const [ranImage, setRanImage] = useState("")
+  const [loading,setLoading] = useState(true)
 
   const dispatch = useDispatch();
   
@@ -32,7 +33,7 @@ export default function Home() {
     }).catch((e) => {
       console.log("error", e)
     })
-
+    setLoading(false)
   }, [])
 
   const handleChange = (e) => {
@@ -51,9 +52,9 @@ export default function Home() {
 
     // console.log("---", caption, "===", tag, "---image", ranImage);
     localStorage.setItem("data", JSON.stringify(data));
-    setTag("");
-    setCaption("");
     dispatch(addAlbum(data))
+    setCaption("");
+    setTag("");
     Router.push('/home')
    }
    else{
@@ -83,7 +84,12 @@ export default function Home() {
         <div className={styles.grid}>
           <form className={styles.card}>
             <div className="d-block">
+            { !loading ?  
               <img src={ranImage} alt="random" width={200} height={150} />
+              : <div className={styles.loader}>
+                ...
+              </div>
+            }
               <center>
                 {" "}
                 <input
